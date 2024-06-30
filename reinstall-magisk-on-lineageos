@@ -2,7 +2,10 @@
 
 set -e
 
-PHONE_ADB_SERIAL_NUMBER=810972cf
+BUILD_URL=""
+
+PHONE_ADB_SERIAL_NUMBER=810a3547
+# PHONE_ADB_SERIAL_NUMBER=f181a7fe # Yve
 
 check_phone_is_connected() {
     if ! adb devices | grep --silent "$PHONE_ADB_SERIAL_NUMBER"; then
@@ -89,8 +92,8 @@ enable_adb_root_access() {
 main() {
     check_phone_is_connected
     enable_adb_root_access
-    download_latest_lineageos_build
-    extract_boot_image
+    # download_latest_lineageos_build
+    # extract_boot_image
     transfer_unpatched_boot_image_to_phone
     patch_boot_image_on_phone
     transfer_patched_boot_image_to_pc
